@@ -35,6 +35,14 @@ class ledmatrix(SampleBase):
             leds["led%d" % (i+20)] = [ledelectrode30[0]+(i-1)*ledelectrode30[2],ledelectrode30[1],color2[0],color2[1],color2[2]]
         for i in range(1,11):
             leds["led%d" % (i+30)] = [ledelectrode40[0]+(i-1)*ledelectrode40[2],ledelectrode40[1],color2[0],color2[1],color2[2]]
+        leds["led41"] = [led41[0],led41[1],color1[0],color1[1],color1[2]]
+        leds["led42"] = [led42[0],led42[1],color1[0],color1[1],color1[2]]
+        leds["led43"] = [led43[0],led43[1],color1[0],color1[1],color1[2]]
+        leds["led44"] = [led44[0],led44[1],color1[0],color1[1],color1[2]]
+        for i in range(ledstatus[2]):
+            leds["ledstatus%d" % (i+1)] = [ledstatus[0]+i,ledstatus[1],color1[0],color1[1],color1[2]]
+        leds["ledpower"] = [ledpower[0],ledpower[1],color1[0],color1[1],color1[2]]
+        leds["ledbt"] = [ledbt[0],ledbt[1],color1[0],color1[1],color1[2]]
         print(leds)
         # x_step = max(1, width / sub_blocks)
         # y_step = max(1, height / sub_blocks)
