@@ -19,7 +19,7 @@ class ledmatrix(SampleBase):
         while True:
             for y in range(0, height):
                 for x in range(0, width):
-                    self.matrix.SetPixel(x,y,0,0,255)
+                    self.matrix.SetPixel(x,y,0,0,200)
             #         c = sub_blocks * int(y / y_step) + int(x / x_step)
             #         if count % 4 == 0:
             #             self.matrix.SetPixel(x, y, c, c, c)
