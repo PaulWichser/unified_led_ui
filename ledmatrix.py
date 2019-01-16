@@ -2,6 +2,11 @@
 from samplebase import SampleBase
 import time
 
+colorR=0
+colorG=0
+colorB=255
+x=9
+y=5
 
 class ledmatrix(SampleBase):
     def __init__(self, *args, **kwargs):
@@ -17,9 +22,9 @@ class ledmatrix(SampleBase):
 
 
         while True:
-            for y in range(0, height):
-                for x in range(0, width):
-                    self.matrix.SetPixel(x,y,0,0,200)
+            # for y in range(0, height):
+            #     for x in range(0, width):
+                    self.matrix.SetPixel(x,y,colorR,colorG,colorB)
             #         c = sub_blocks * int(y / y_step) + int(x / x_step)
             #         if count % 4 == 0:
             #             self.matrix.SetPixel(x, y, c, c, c)
