@@ -52,16 +52,14 @@ leds["ledpower"] = [ledpower[0],ledpower[1],color1[0],color1[1],color1[2]]
 leds["ledbt"] = [ledbt[0],ledbt[1],color2[0],color2[1],color2[2]]
 print(leds)
 
-def clearmatrix():
-    for x in range(width):
-        for y in range(height):
-            matrix.SetPixel(x,y,0,0,0)
-
-
-
 class ledmatrix(SampleBase):
     def __init__(self, *args, **kwargs):
         super(ledmatrix, self).__init__(*args, **kwargs)
+
+    def clearmatrix(self):
+        for x in range(self.matrix.width):
+            for y in range(self.matrix.height):
+                self.matrix.SetPixel(x,y,0,0,0)
 
     def run(self):
         # sub_blocks = 16
