@@ -97,7 +97,7 @@ class ledmatrix(SampleBase):
             for x in range(self.matrix.width):
                 for y in range(self.matrix.height):
                     self.matrix.SetPixel(x,y,0,0,0)
-            clearmatrix(self)
+#            clearmatrix(self)
             leds["ledbt"]=[bt[0],bt[1],color1[0],color1[1],color1[2]]
             for key, value in leds.items():
                 self.matrix.SetPixel(value[0],value[1],value[2],value[3],value[4])
