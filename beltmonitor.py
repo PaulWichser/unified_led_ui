@@ -78,17 +78,13 @@ class ledmatrix(SampleBase):
             lcd.message = "                "
             start = time.time()
             while (time.time() - start) < sleeptime:
-                lcd.message = "     *     "
+                lcd.message = "      *   "
                 time.sleep(0.5)
-                lcd.message = "     **    "
+                lcd.message = "      **  "
                 time.sleep(0.5)
-                lcd.message = "     ***   "
+                lcd.message = "      *** "
                 time.sleep(0.5)
-                lcd.message = "     ****  "
-                time.sleep(0.5)
-                lcd.message = "     ***** "
-                time.sleep(0.5)
-                lcd.message = "     ******"
+                lcd.message = "      ****"
                 time.sleep(0.5)
 
             #State2: Status LEDs amber, "Connect CABLE"
