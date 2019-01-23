@@ -72,7 +72,7 @@ class ledmatrix(SampleBase):
 
         while True:
             #State1
-            clearmatrix()
+            clearmatrix(self)
             leds["ledpower"] = [ledpower[0],ledpower[1],color1[0],color1[1],color1[2]]
             leds["ledbt"] = [ledbt[0],ledbt[1],color2[0],color2[1],color2[2]]
             power=leds.get("ledpower")
@@ -90,7 +90,7 @@ class ledmatrix(SampleBase):
                 time.sleep(1)
 
             #State2
-            clearmatrix()
+            clearmatrix(self)
             leds["ledbt"]=[bt[0],bt[1],color1[0],color1[1],color1[2]]
             for key, value in leds.items():
                 self.matrix.SetPixel(value[0],value[1],value[2],value[3],value[4])
