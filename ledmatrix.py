@@ -3,7 +3,7 @@ from samplebase import SampleBase
 import time
 
 color1 = [0,0,255]		#color in RGB values 0 to 255
-color2 = [255,125,0]
+color2 = [255,125,000]
 
 ledelectrode10 = [0,18,3]		#locations of electrode leds 1-10, indexed at 0,0 [x,y,xspace]
 ledelectrode20 = [36,18,3]

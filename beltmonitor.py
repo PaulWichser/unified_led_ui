@@ -16,6 +16,8 @@ lcd.color = [100, 0, 0]
 
 
 #Initialize LED matrix
+width = 64                      #number of LEDs in a matrix row
+height = 32                     #number of LEDs in a matrix column
 color1 = [0,0,255]		#color in RGB values 0 to 255
 color2 = [255,125,0]
 
@@ -50,6 +52,13 @@ leds["ledpower"] = [ledpower[0],ledpower[1],color1[0],color1[1],color1[2]]
 leds["ledbt"] = [ledbt[0],ledbt[1],color2[0],color2[1],color2[2]]
 print(leds)
 
+def clearmatrix():
+    for x in range(width):
+        for y in range(height):
+            matrix.SetPixel(x,y,0,0,0)
+
+
+
 class ledmatrix(SampleBase):
     def __init__(self, *args, **kwargs):
         super(ledmatrix, self).__init__(*args, **kwargs)
@@ -65,6 +74,9 @@ class ledmatrix(SampleBase):
 
         while True:
             #State1
+            clearmatrix()
+            leds["ledpower"] = [ledpower[0],ledpower[1],color1[0],color1[1],color1[2]]
+            leds["ledbt"] = [ledbt[0],ledbt[1],color2[0],color2[1],color2[2]]
             power=leds.get("ledpower")
             self.matrix.SetPixel(power[0],power[1],power[2],power[3],power[4])
             bt=leds.get("ledbt")
@@ -72,19 +84,21 @@ class ledmatrix(SampleBase):
             lcd.clear
             start = time.time()
             while (time.time() - start) < sleeptime:
-                lcd.message = "Initializing."
+                lcd.message = "Initializing.  "
                 time.sleep(1)
-                lcd.message = "Initializing.."
+                lcd.message = "Initializing.. "
                 time.sleep(1)
                 lcd.message = "Initializing..."
                 time.sleep(1)
 
             #State2
+            clearmatrix()
             leds["ledbt"]=[bt[0],bt[1],color1[0],color1[1],color1[2]]
             for key, value in leds.items():
                 self.matrix.SetPixel(value[0],value[1],value[2],value[3],value[4])
-            lcd.clear
-            lcd.message = " Ready To Test"
+            lcd.message = "                "
+            lcd.message = "Connect To Belt"
+            time.sleep(sleeptime)
 
             # for y in range(0, height):
             #     for x in range(0, width):
