@@ -71,11 +71,10 @@ class ledmatrix(SampleBase):
 
 
         while True:
-            #State1
+            #State1: Power blue, Bluetooth amber, "Initializing..."
             for x in range(self.matrix.width):
                 for y in range(self.matrix.height):
                     self.matrix.SetPixel(x,y,0,0,0)
-
 #            clearmatrix(self)
             leds["ledpower"] = [ledpower[0],ledpower[1],color1[0],color1[1],color1[2]]
             leds["ledbt"] = [ledbt[0],ledbt[1],color2[0],color2[1],color2[2]]
@@ -93,7 +92,7 @@ class ledmatrix(SampleBase):
                 lcd.message = "Initializing..."
                 time.sleep(1)
 
-            #State2
+            #State2: All electrodes amber, "Connect Belt"
             for x in range(self.matrix.width):
                 for y in range(self.matrix.height):
                     self.matrix.SetPixel(x,y,0,0,0)
@@ -105,23 +104,30 @@ class ledmatrix(SampleBase):
             lcd.message = "Connect To Belt"
             time.sleep(sleeptime)
 
-            # for y in range(0, height):
-            #     for x in range(0, width):
-            #self.matrix.SetPixel(led41[0],led41[1],color1[0],color1[1],color1[2])
-            #self.matrix.SetPixel(led42[0],led42[1],color2[0],color2[1],color2[2])
-            #         c = sub_blocks * int(y / y_step) + int(x / x_step)
-            #         if count % 4 == 0:
-            #             self.matrix.SetPixel(x, y, c, c, c)
-            #         elif count % 4 == 1:
-            #             self.matrix.SetPixel(x, y, c, 0, 0)
-            #         elif count % 4 == 2:
-            #             self.matrix.SetPixel(x, y, 0, c, 0)
-            #         elif count % 4 == 3:
-            #             self.matrix.SetPixel(x, y, 0, 0, c)
-            #
-            # count += 1
-            # time.sleep(2)
+            #State3: All LEDs blue, "Ready To Test"
+            for x in range(self.matrix.width):
+                for y in range(self.matrix.height):
+                    self.matrix.SetPixel(x,y,0,0,0)
+            for key, value in leds.items():
+                leds[key]=(value[0],value[1],color1[0],color1[1],color1[2])
+            for key, value in leds.items():
+                self.matrix.SetPixel(value[0],value[1],value[2],value[3],value[4])
+            lcd.message = "                "
+            lcd.message = "Ready To Test"
+            time.sleep(sleeptime)
 
+            #State4: 4 LEDs amber, "Fix Electrodes"
+            for x in range(self.matrix.width):
+                for y in range(self.matrix.height):
+                    self.matrix.SetPixel(x,y,0,0,0)
+            leds["led33"]=(leds["led33"][0],leds["led33"][1],color2[0],color2[1],color2[2])
+            leds["led35"]=(leds["led35"][0],leds["led35"][1],color2[0],color2[1],color2[2])
+            leds["led41"]=(leds["led41"][0],leds["led41"][1],color2[0],color2[1],color2[2])
+            for key, value in leds.items():
+                self.matrix.SetPixel(value[0],value[1],value[2],value[3],value[4])
+            lcd.message = "                "
+            lcd.message = "Fix Electrodes"
+            time.sleep(sleeptime)
 
 # Main function
 if __name__ == "__main__":
