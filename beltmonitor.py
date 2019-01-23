@@ -75,7 +75,7 @@ class ledmatrix(SampleBase):
             leds["ledpower"] = [ledpower[0],ledpower[1],color1[0],color1[1],color1[2]]
             power=leds.get("ledpower")
             self.matrix.SetPixel(power[0],power[1],power[2],power[3],power[4])
-            lcd.clear
+            lcd.message = "                "
             start = time.time()
             while (time.time() - start) < sleeptime:
                 lcd.message = "     *     "
